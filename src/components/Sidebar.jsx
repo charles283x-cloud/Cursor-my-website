@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { FileDown, Mail, ChevronRight } from 'lucide-react'
 import { useLocale } from '../context/LocaleContext'
 
@@ -39,8 +40,8 @@ export default function Sidebar() {
           </div>
           <ChevronRight className="w-5 h-5 ml-auto shrink-0 group-hover:translate-x-0.5 transition-transform" />
         </a>
-        <a
-          href={`mailto:${t('contactEmail')}`}
+        <Link
+          to="/contact"
           className="flex items-center gap-4 p-4 bg-white border-2 border-portal-blue rounded-lg text-portal-blue hover:bg-portal-blue/5 transition-colors group"
         >
           <div className="w-12 h-12 rounded-lg bg-portal-blue/10 flex items-center justify-center shrink-0">
@@ -51,7 +52,7 @@ export default function Sidebar() {
             <div className="text-slate-600 text-sm">{t('bizContactDesc')}</div>
           </div>
           <ChevronRight className="w-5 h-5 ml-auto shrink-0 group-hover:translate-x-0.5 transition-transform" />
-        </a>
+        </Link>
       </div>
     </aside>
   )
