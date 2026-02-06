@@ -1,31 +1,26 @@
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
-import Hero from './components/Hero'
-import KeyFigures from './components/KeyFigures'
-import LatestNews from './components/LatestNews'
-import Sidebar from './components/Sidebar'
 import Footer from './components/Footer'
+import HomePage from './pages/HomePage'
+import ProjectCatalogPage from './pages/ProjectCatalogPage'
+import ProjectDetailPage from './pages/ProjectDetailPage'
+import NewsListPage from './pages/NewsListPage'
+import NewsDetailPage from './pages/NewsDetailPage'
+import PartnerRecruitPage from './pages/PartnerRecruitPage'
 import './App.css'
 
 function App() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
-      <Hero />
-
-      <main className="flex-1">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 space-y-0">
-              <KeyFigures />
-              <LatestNews />
-            </div>
-            <div className="lg:col-span-1">
-              <Sidebar />
-            </div>
-          </div>
-        </div>
-      </main>
-
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects" element={<ProjectCatalogPage />} />
+        <Route path="/projects/:id" element={<ProjectDetailPage />} />
+        <Route path="/news" element={<NewsListPage />} />
+        <Route path="/news/:id" element={<NewsDetailPage />} />
+        <Route path="/partners" element={<PartnerRecruitPage />} />
+      </Routes>
       <Footer />
     </div>
   )

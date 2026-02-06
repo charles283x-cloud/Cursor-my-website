@@ -2,9 +2,10 @@ export default function Hero() {
   return (
     <section className="relative w-full aspect-[3/1] min-h-[200px] sm:min-h-[280px] overflow-hidden bg-slate-900">
       <img
-        src="https://images.unsplash.com/photo-1626266061368-46a8e0a2981d?w=1400&q=85"
-        alt="大型集装箱式电池储能电站在夕阳下"
+        src="/hero-bg.png"
+        alt="大型户外电池储能集装箱项目"
         className="absolute inset-0 w-full h-full object-cover object-center"
+        loading="eager"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 lg:p-8">

@@ -1,12 +1,11 @@
+import { Link } from 'react-router-dom'
 import { Mail, MapPin } from 'lucide-react'
 
 const FOOTER_LINKS = [
-  { label: '首页', href: '#' },
-  { label: '项目概况', href: '#project' },
-  { label: '核心指标', href: '#figures' },
-  { label: '技术方案', href: '#tech' },
-  { label: '新闻动态', href: '#news' },
-  { label: '联系我们', href: '#contact' },
+  { label: '首页', href: '/' },
+  { label: '项目信息', href: '/projects' },
+  { label: '新闻动态', href: '/news' },
+  { label: '招募合作伙伴', href: '/partners' },
 ]
 
 export default function Footer() {
@@ -25,12 +24,12 @@ export default function Footer() {
             <ul className="space-y-2">
               {FOOTER_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-white/80 hover:text-white text-sm transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
