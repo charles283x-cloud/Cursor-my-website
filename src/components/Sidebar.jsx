@@ -1,27 +1,24 @@
 import { FileDown, Mail, ChevronRight } from 'lucide-react'
+import { useLocale } from '../context/LocaleContext'
 
-const TOPICS = [
-  { label: '全钒液流电池技术解析', href: '#' },
-  { label: 'EMS 能量管理系统优势', href: '#' },
-  { label: '储能电站安全设计要点', href: '#' },
-  { label: '电网调频市场机制浅析', href: '#' },
-]
+const TOPIC_KEYS = ['topic1', 'topic2', 'topic3', 'topic4']
 
 export default function Sidebar() {
+  const { t } = useLocale()
   return (
     <aside className="space-y-6">
       <div className="bg-white border border-slate-200 rounded-lg overflow-hidden">
         <h2 className="text-base font-semibold text-slate-800 px-4 py-3 bg-slate-50 border-b border-slate-200">
-          技术亮点专题
+          {t('topicTitle')}
         </h2>
         <ul className="divide-y divide-slate-100">
-          {TOPICS.map((item) => (
-            <li key={item.label}>
+          {TOPIC_KEYS.map((key) => (
+            <li key={key}>
               <a
-                href={item.href}
+                href="#"
                 className="flex items-center justify-between px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 hover:text-portal-blue transition-colors"
               >
-                {item.label}
+                {t(key)}
                 <ChevronRight className="w-4 h-4 text-slate-400 shrink-0" />
               </a>
             </li>
@@ -37,8 +34,8 @@ export default function Sidebar() {
             <FileDown className="w-6 h-6" />
           </div>
           <div>
-            <div className="font-medium">项目白皮书下载</div>
-            <div className="text-white/80 text-sm">获取完整技术方案</div>
+            <div className="font-medium">{t('whitepaper')}</div>
+            <div className="text-white/80 text-sm">{t('whitepaperDesc')}</div>
           </div>
           <ChevronRight className="w-5 h-5 ml-auto shrink-0 group-hover:translate-x-0.5 transition-transform" />
         </a>
@@ -50,8 +47,8 @@ export default function Sidebar() {
             <Mail className="w-6 h-6" />
           </div>
           <div>
-            <div className="font-medium">商务合作联系</div>
-            <div className="text-slate-600 text-sm">洽谈合作与咨询</div>
+            <div className="font-medium">{t('bizContact')}</div>
+            <div className="text-slate-600 text-sm">{t('bizContactDesc')}</div>
           </div>
           <ChevronRight className="w-5 h-5 ml-auto shrink-0 group-hover:translate-x-0.5 transition-transform" />
         </a>

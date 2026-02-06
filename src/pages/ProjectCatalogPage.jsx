@@ -2,9 +2,12 @@ import { useState, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Search, MapPin, Zap, ChevronRight } from 'lucide-react'
 import projectsData from '../data/projects.json'
+import { useLocale } from '../context/LocaleContext'
 
-const REGIONS = ['', '茨城县', '福冈县', '北海道', '关东']
+const REGIONS = ['', '茨城县', '福冈县', '北海道', '关东', '关西']
 const STATUSES = ['', '规划', '在建', '运营']
+const REGION_KEY = { '茨城县': 'regionIbaraki', '福冈县': 'regionFukuoka', '北海道': 'regionHokkaido', '关东': 'regionKanto', '关西': 'regionKansai' }
+const STATUS_KEY = { '规划': 'statusPlan', '在建': 'statusBuilding', '运营': 'statusOperating' }
 
 export default function ProjectCatalogPage() {
   const [searchParams] = useSearchParams()
@@ -13,6 +16,7 @@ export default function ProjectCatalogPage() {
     status: searchParams.get('status') || '',
     q: searchParams.get('q') || '',
   })
+  const { t } = useLocale()
 
   useEffect(() => {
     setFilters({
@@ -36,14 +40,14 @@ export default function ProjectCatalogPage() {
   return (
     <main className="flex-1">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-        <h1 className="text-2xl font-semibold text-slate-800 mb-6">项目信息</h1>
+        <h1 className="text-2xl font-semibold text-slate-800 mb-6">{t('projectsTitle')}</h1>
 
         <div className="flex flex-col sm:flex-row gap-4 mb-6">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
-              placeholder="搜索项目..."
+              placeholder={t('searchPlaceholder')}
               value={filters.q}
               onChange={(e) => setFilters((f) => ({ ...f, q: e.target.value }))}
               className="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-portal-blue/30"
@@ -54,9 +58,9 @@ export default function ProjectCatalogPage() {
             onChange={(e) => setFilters((f) => ({ ...f, region: e.target.value }))}
             className="px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-portal-blue/30"
           >
-            <option value="">全部地区</option>
+            <option value="">{t('allRegion')}</option>
             {REGIONS.filter(Boolean).map((r) => (
-              <option key={r} value={r}>{r}</option>
+              <option key={r} value={r}>{t(REGION_KEY[r] || r)}</option>
             ))}
           </select>
           <select
@@ -64,15 +68,15 @@ export default function ProjectCatalogPage() {
             onChange={(e) => setFilters((f) => ({ ...f, status: e.target.value }))}
             className="px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-portal-blue/30"
           >
-            <option value="">全部状态</option>
+            <option value="">{t('allStatus')}</option>
             {STATUSES.filter(Boolean).map((s) => (
-              <option key={s} value={s}>{s}</option>
+              <option key={s} value={s}>{t(STATUS_KEY[s] || s)}</option>
             ))}
           </select>
         </div>
 
         {filteredProjects.length === 0 ? (
-          <p className="text-slate-500 py-8">暂无项目</p>
+          <p className="text-slate-500 py-8">{t('noProjects')}</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.map((p) => (
@@ -96,7 +100,7 @@ export default function ProjectCatalogPage() {
                   <div className="flex flex-wrap gap-2 text-sm text-slate-600 mb-2">
                     <span className="flex items-center gap-1">
                       <MapPin className="w-3.5 h-3.5" />
-                      {p.region}
+                      {t(REGION_KEY[p.region]) || p.region}
                     </span>
                     <span className="flex items-center gap-1">
                       <Zap className="w-3.5 h-3.5" />
@@ -109,10 +113,10 @@ export default function ProjectCatalogPage() {
                       p.status === '在建' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-700'
                     }`}
                   >
-                    {p.status}
+                    {t(STATUS_KEY[p.status]) || p.status}
                   </span>
                   <div className="mt-3 flex items-center text-portal-blue text-sm font-medium">
-                    查看详情
+                    {t('viewDetail')}
                     <ChevronRight className="w-4 h-4 ml-0.5" />
                   </div>
                 </div>
