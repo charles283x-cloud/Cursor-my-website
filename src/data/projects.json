@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "title": "东京湾岸 20MW 储能电站项目",
+    "region": "关东",
+    "capacity": "20MW",
+    "status": "在建",
+    "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
+    "description": "位于东京湾岸工业区的独立储能项目，用于削峰填谷和提高可再生能源消纳能力。"
+  },
+  {
+    "id": 2,
+    "title": "横滨港岸电配套储能项目",
+    "region": "关东",
+    "capacity": "20MW",
+    "status": "运营",
+    "image": "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
+    "description": "服务横滨港岸电系统的 20MW 储能站，用于为停靠船舶提供稳定清洁的岸电。"
+  },
+  {
+    "id": 3,
+    "title": "大阪城市配电网侧储能项目",
+    "region": "关西",
+    "capacity": "20MW",
+    "status": "在建",
+    "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
+    "description": "部署在大阪城区配电网侧的电池储能系统，用于提升电网调峰和事故备用能力。"
+  },
+  {
+    "id": 4,
+    "title": "关西风光互补示范储能项目",
+    "region": "关西",
+    "capacity": "20MW",
+    "status": "运营",
+    "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80",
+    "description": "依托关西地区风电与光伏资源的 20MW 风光互补储能示范项目。"
+  },
+  {
+    "id": 5,
+    "title": "千叶工业园区用户侧储能项目",
+    "region": "关东",
+    "capacity": "20MW",
+    "status": "在建",
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80",
+    "description": "千叶某大型工业园区内部建设的用户侧储能电站，用于降低用电成本并提升供电可靠性。"
+  },
+  {
+    "id": 6,
+    "title": "京都文化保护区备电储能项目",
+    "region": "关西",
+    "capacity": "20MW",
+    "status": "运营",
+    "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80",
+    "description": "为京都部分重要文化设施提供备电保障的 20MW 储能系统，支持关键负荷在停电时平稳切换。"
+  }
+]

@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Search, MapPin, Zap, ChevronRight } from 'lucide-react'
+import projectsData from '../data/projects.json'
 
 const REGIONS = ['', '茨城县', '福冈县', '北海道', '关东']
 const STATUSES = ['', '规划', '在建', '运营']
 
 export default function ProjectCatalogPage() {
   const [searchParams] = useSearchParams()
-  const [projects, setProjects] = useState([])
-  const [loading, setLoading] = useState(true)
   const [filters, setFilters] = useState({
     region: searchParams.get('region') || '',
     status: searchParams.get('status') || '',
@@ -23,19 +22,16 @@ export default function ProjectCatalogPage() {
     })
   }, [searchParams])
 
-  useEffect(() => {
-    const params = new URLSearchParams()
-    if (filters.region) params.set('region', filters.region)
-    if (filters.status) params.set('status', filters.status)
-    if (filters.q) params.set('q', filters.q)
-    fetch(`/api/projects?${params}`)
-      .then((r) => r.json())
-      .then((data) => {
-        setProjects(data)
-        setLoading(false)
-      })
-      .catch(() => setLoading(false))
-  }, [filters])
+  const filteredProjects = projectsData.filter((p) => {
+    if (filters.region && p.region !== filters.region) return false
+    if (filters.status && p.status !== filters.status) return false
+    if (filters.q) {
+      const q = filters.q.toLowerCase()
+      const text = `${p.title || ''} ${p.description || ''}`.toLowerCase()
+      if (!text.includes(q)) return false
+    }
+    return true
+  })
 
   return (
     <main className="flex-1">
@@ -75,13 +71,11 @@ export default function ProjectCatalogPage() {
           </select>
         </div>
 
-        {loading ? (
-          <p className="text-slate-500 py-8">加载中...</p>
-        ) : projects.length === 0 ? (
+        {filteredProjects.length === 0 ? (
           <p className="text-slate-500 py-8">暂无项目</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((p) => (
+            {filteredProjects.map((p) => (
               <Link
                 key={p.id}
                 to={`/projects/${p.id}`}
@@ -106,7 +100,7 @@ export default function ProjectCatalogPage() {
                     </span>
                     <span className="flex items-center gap-1">
                       <Zap className="w-3.5 h-3.5" />
-                      {p.capacity_mw}MW / {p.capacity_mwh}MWh
+                      {p.capacity || '20MW'}
                     </span>
                   </div>
                   <span
