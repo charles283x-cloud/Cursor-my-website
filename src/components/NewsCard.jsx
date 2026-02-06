@@ -14,6 +14,11 @@ export default function NewsCard({ image, title, date, href = '#' }) {
           src={image}
           alt=""
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          onError={(e) => {
+            e.currentTarget.onerror = null
+            e.currentTarget.src =
+              'https://images.unsplash.com/photo-1584277264794-60a3a9991f33?auto=format&fit=crop&w=800&q=80'
+          }}
         />
       </div>
       <div className="flex-1 min-w-0">
