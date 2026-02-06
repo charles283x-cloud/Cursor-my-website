@@ -16,7 +16,7 @@ export default function ContactForm() {
     setSuccess(false)
     const formEl = e.target
     const formData = new URLSearchParams()
-    formData.append('form-name', 'business-contact')
+    formData.append('form-name', 'contact')
     formData.append('company', form.company.trim())
     formData.append('contact_name', form.contact_name.trim())
     formData.append('email', form.email.trim())
@@ -39,14 +39,13 @@ export default function ContactForm() {
   return (
     <div className="bg-slate-50/80 rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-100">
       <form
-        name="business-contact"
-        method="POST"
+        name="contact"
+        method="post"
         data-netlify="true"
-        netlify="true"
         onSubmit={handleSubmit}
         className="space-y-5"
       >
-        <input type="hidden" name="form-name" value="business-contact" />
+        <input type="hidden" name="form-name" value="contact" />
         <div>
           <label htmlFor="contact-company" className="block text-sm font-medium text-slate-700 mb-1.5">
             {t('companyLabel')}
@@ -120,7 +119,7 @@ export default function ContactForm() {
           disabled={submitting}
           className="w-full py-3 rounded-lg bg-portal-blue text-white font-medium hover:bg-portal-blue/90 focus:outline-none focus:ring-2 focus:ring-portal-blue/50 focus:ring-offset-2 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
         >
-          {submitting ? t('contactFormSending') : t('submitApply')}
+          {submitting ? t('contactFormSending') : t('contactSubmitButton')}
         </button>
       </form>
     </div>

@@ -9,8 +9,8 @@
   <body>
     <div id="root"></div>
     <!-- Netlify Forms: static form for build-time detection (React form posts via JS) -->
-    <form name="business-contact" netlify="true" netlify-honeypot="bot" hidden>
-      <input type="hidden" name="form-name" value="business-contact" />
+    <form name="contact" method="post" data-netlify="true" hidden>
+      <input type="hidden" name="form-name" value="contact" />
       <input type="text" name="company" />
       <input type="text" name="contact_name" />
       <input type="email" name="email" />
