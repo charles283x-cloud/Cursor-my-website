@@ -18,7 +18,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-semibold text-lg mb-3">{t('siteName')}</h3>
+            <h3 className="font-semibold text-lg mb-3">{t('companyName')}</h3>
             <p className="text-white/80 text-sm leading-relaxed">
               {t('footerDesc')}
             </p>
@@ -43,7 +43,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-white/80">
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 shrink-0" />
-                contact@example.com
+                <a href={`mailto:${t('contactEmail')}`} className="hover:text-white transition-colors">{t('contactEmail')}</a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
@@ -73,7 +73,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-6 border-t border-white/20 text-center text-white/70 text-sm">
-          © {new Date().getFullYear()} {t('siteName')} · {t('copyright')}
+          © {new Date().getFullYear()} {t('companyName')} · {t('copyright')}
         </div>
       </div>
     </footer>
